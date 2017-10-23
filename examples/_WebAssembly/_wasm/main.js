@@ -1,27 +1,29 @@
 
-
-
-var worker = new Worker('js/wasm-worker.js');
-worker.postMessage({
-  data: WemAssembly.Module(wasmCode);
-});
-
-
-//computeFake的功能：打印784个数？？？？？？？？？？？？
-
 var result = new ArrayBuffer(784);
 
-myWorker.onmessage = function(e) {
-	
-  for(i = 0; i < 28*28; ++i)
-  {
-     result.push(e.data);                         //data可否设为一个数组？？？？            
-     //console.log('Message received from worker');
-  }
-     
-}
+if (window.Worker) { // Check if Browser supports the Worker api.
 
-console.log('Number =', result);             //computeFake的返回形式？？？？？
+      var worker = new Worker('worker.js');
+	
+      //不传参数给worker	
+      //       worker.postMessage({
+      //            data: WemAssembly.Module(wasmCode);
+      //       });
+
+
+      //Message received from worker
+      //computeFake的功能：打印784个数？？？？？？？？？？？？
+
+      for(i = 0; i < 28*28; ++i)
+      {	
+            myWorker.onmessage = function(e) {
+                result.push(e.data);                         //data的形式？？？？？
+            }
+      }
+
+      console.log('Number =', result);             //computeFake的返回形式？？？？？
+		
+}
 
 
 
