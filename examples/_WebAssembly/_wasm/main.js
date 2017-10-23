@@ -17,7 +17,7 @@ if (window.Worker) { // Check if Browser supports the Worker api.
       for(i = 0; i < 28*28; ++i)
       {	
             myWorker.onmessage = function(e) {
-                result.push(e.data);                         //data的形式？？？？？
+                result.push(e.data[i]);                         //data的形式？？？？？
             }
       }
 
