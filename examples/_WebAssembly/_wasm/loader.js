@@ -15,26 +15,12 @@
 // }
 
 
-function fetchAndInstantiate(url, importObject) {
-  return fetch(url).then(response =>
-    response.arrayBuffer()
-  ).then(bytes =>
-    WebAssembly.instantiate(bytes, importObject)
-  ).
-//   then(result =>
-//       results.instance
-//   );
-   then(result => {
-      imports.env = imports.env || {}
-      Object.assign(imports.env, {
-        memoryBase: 0,
-        tableBase: 0,
-        memory: new WebAssembly.Memory({ initial: 256, maximum: 256 }),
-        table: new WebAssembly.Table({ initial: 0, maximum: 0, element: 'anyfunc' })
-      })
-      return new WebAssembly.Instance(result, imports)
-    })      
-         
+
+function loadWebAssembly (path) {
+  return fetch(path)                   // 加载文件        
+    .then(res => res.arrayBuffer())    // 转成 ArrayBuffer
+    .then(WebAssembly.instantiate)     // 编译 + 实例化
+    .then(mod => mod.instance)         // 提取生成都模块
 }
 
 
