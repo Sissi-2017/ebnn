@@ -22,7 +22,7 @@ function fetchAndInstantiate(url, importObject) {
     WebAssembly.instantiate(bytes, importObject)
   ).then(result =>{
       results.instance
-}
+)}
 
 
 
