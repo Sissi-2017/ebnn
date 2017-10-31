@@ -30,6 +30,17 @@
 //     )
     
     
+    
+    var importObject = {
+        imports: {
+           imported_func: function(arg) {
+           console.log(arg);
+           }
+        }
+    };
+
+    
+    
     fetchAndInstantiate('simple_interface_Pro.wasm', importObject).then(function(instance) {
         const computeFake = instance.exports._computeFake
         var image = new ArrayBuffer(784);
