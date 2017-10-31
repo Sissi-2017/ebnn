@@ -20,9 +20,11 @@ function fetchAndInstantiate(url, importObject) {
     response.arrayBuffer()
   ).then(bytes =>
     WebAssembly.instantiate(bytes, importObject)
-  ).then(result =>{
+  ).then(result =>
       results.instance
-)}
+  );
+}
+
 
 
 
