@@ -15,26 +15,19 @@
   <p>The test result can be found in console.</p>
   <p id="result"></p>
 
-   <script src="main.js"></script>
-  
-<!--   <script>
-
+  <script>
     loadWebAssembly('simple_interface_Pro.wasm')
       .then(instance => {
-
         const computeFake = instance.exports._computeFake
-
         var image = new ArrayBuffer(784);
         var i;
         for(i = 0; i < 28*28; ++i)
         {
-            image.push(i);             //把一个元素添加到数组的尾部 
+            image.push(i);
         }
-
         console.log('Number =', computeFake())
       }
     )
-
     /*
     makeFactorial({
       'global': {},
@@ -47,7 +40,6 @@
       console.log(computeFake());
     })
     */
-
-  </script> -->
+  </script>
 </body>
 </html>
