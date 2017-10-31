@@ -24,7 +24,7 @@ function fetchAndInstantiate(url, importObject) {
 //   then(result =>
 //       results.instance
 //   );
-   then(module => {
+   then(result => {
       imports.env = imports.env || {}
       Object.assign(imports.env, {
         memoryBase: 0,
@@ -32,7 +32,7 @@ function fetchAndInstantiate(url, importObject) {
         memory: new WebAssembly.Memory({ initial: 256, maximum: 256 }),
         table: new WebAssembly.Table({ initial: 0, maximum: 0, element: 'anyfunc' })
       })
-      return new WebAssembly.Instance(module, imports)
+      return new WebAssembly.Instance(result, imports)
     })      
          
 }
