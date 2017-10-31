@@ -41,7 +41,7 @@
 
     
     
-    fetchAndInstantiate('simple_interface_Pro.wasm', importObject).then(function(instance) {
+    loadWebAssembly('simple_interface_Pro.wasm').then(function(instance) {
         const computeFake = instance.exports._computeFake
         var image = new ArrayBuffer(784);
         var i;
