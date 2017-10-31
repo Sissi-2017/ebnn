@@ -20,9 +20,19 @@ function fetchAndInstantiate(url, importObject) {
     response.arrayBuffer()
   ).then(bytes =>
     WebAssembly.instantiate(bytes, importObject)
-  ).then(results =>
-    results.instance
-  );
+  ).then(module =>{
+//     results.instance
+    
+      imports.env = imports.env || {}
+      Object.assign(imports.env, {
+        memoryBase: 0,
+        tableBase: 0,
+        memory: new WebAssembly.Memory({ initial: 256, maximum: 256 }),
+        table: new WebAssembly.Table({ initial: 0, maximum: 0, element: 'anyfunc' })
+      })
+      return new WebAssembly.Instance(module, imports)
+    })     
+         
 }
 
 
