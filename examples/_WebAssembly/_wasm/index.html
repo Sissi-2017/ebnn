@@ -16,30 +16,37 @@
   <p id="result"></p>
 
   <script>
-    loadWebAssembly('simple_interface_Pro.wasm')
-      .then(instance => {
+//     loadWebAssembly('simple_interface_Pro.wasm')
+//       .then(instance => {
+//         const computeFake = instance.exports._computeFake
+//         var image = new ArrayBuffer(784);
+//         for(var i = 0; i < 28*28; ++i)
+//         {
+//             image.push(i);
+//         }
+//         console.log('Number =', computeFake())
+//       }
+//     )
+    
+    
+    
+    var importObject = {
+        imports: {
+           imported_func: function(arg) {
+           console.log(arg);
+           }
+        }
+    };
+
+    fetchAndInstantiate('simple.wasm', importObject).then(function(instance) {
         const computeFake = instance.exports._computeFake
         var image = new ArrayBuffer(784);
-        var i;
-        for(i = 0; i < 28*28; ++i)
+        for(var i = 0; i < 28*28; ++i)
         {
             image.push(i);
         }
         console.log('Number =', computeFake())
-      }
-    )
-    
-    
-    
-//     var importObject = {
-//         imports: {
-//            imported_func: function(arg) {
-//            console.log(arg);
-//            }
-//         }
-//     };
-
-    
+      });
    
     
     
