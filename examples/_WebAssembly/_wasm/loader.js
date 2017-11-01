@@ -22,7 +22,7 @@ function fetchAndInstantiate(url, importObject) {
     response.arrayBuffer()
   ).then(bytes =>
     WebAssembly.instantiate(bytes, importObject)
-  ).then(results =>
+  ).then(results =>{
       imports.env = imports.env || {}
 
       // 开辟内存空间
@@ -40,7 +40,7 @@ function fetchAndInstantiate(url, importObject) {
 
       // 创建 WebAssembly 实例
       return  results.instance
-  );
+  });
 }
 
 
