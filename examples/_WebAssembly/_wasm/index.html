@@ -38,7 +38,7 @@
         }
     };
 
-    fetchAndInstantiate('simple.wasm', importObject).then(function(instance) {
+    fetchAndInstantiate('simple_interface_Pro.wasm', importObject).then(function(instance) {
         const computeFake = instance.exports._computeFake
         var image = new ArrayBuffer(784);
         for(var i = 0; i < 28*28; ++i)
