@@ -16,6 +16,7 @@
 
 
 
+
 function fetchAndInstantiate(url, importObject) {
   return fetch(url).then(response =>
     response.arrayBuffer()
@@ -25,9 +26,6 @@ function fetchAndInstantiate(url, importObject) {
     results.instance
   );
 }
-
-
-
 
 
 function loadJS (url, imports = {}) {
